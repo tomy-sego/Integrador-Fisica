@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura de Electricidad</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculadora de Factura de Electricidad</h1>
+
+        <form id="factura-form">
+            <label for="nombre">Nombre y Apellido:</label>
+            <input type="text" id="nombre" required>
+
+            <label for="tipo">Tipo de Cliente:</label>
+            <select id="tipo" required>
+                <option value="residencial">Residencial Común</option>
+                <option value="comerciante">Comerciante</option>
+            </select>
+
+            <label for="consumo">Consumo (kWh):</label>
+            <input type="number" id="consumo" required>
+
+            <label for="factor-potencia">Factor de Potencia:</label>
+            <input type="number" step="0.01" id="factor-potencia" required>
+
+            <button type="submit">Calcular Factura</button>
+        </form>
+
+        <div id="resultados" class="hidden">
+            <h2>Factura Calculada</h2>
+            <p><strong>Nombre:</strong> <span id="result-nombre"></span></p>
+            <p><strong>Tipo de Cliente:</strong> <span id="result-tipo"></span></p>
+            <p><strong>Consumo (kWh):</strong> <span id="result-consumo"></span></p>
+            <p><strong>Costo de Luz:</strong> $<span id="result-costo-luz"></span></p>
+            <p><strong>Cargo Fijo por Suministro:</strong> $<span id="result-cargo-fijo"></span></p>
+            <p><strong>IVA (21%):</strong> $<span id="result-iva"></span></p>
+            <p><strong>Total a Pagar:</strong> $<span id="result-total"></span></p>
+
+            <button id="download-excel-btn">Descargar Factura en Excel</button>
+            <button id="download-pdf-btn">Descargar Factura en PDF</button>
+        </div>
+        <div id="recomendacion-capacitor" class="hidden">
+            <h3>Recomendación de Capacitor</h3>
+            <p>Para optimizar el factor de potencia, se recomienda un capacitor de: <strong><span id="result-capacitor"></span></strong></p>
+        </div>
+        
+    </div>
+
+    <!-- Librerías necesarias -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
